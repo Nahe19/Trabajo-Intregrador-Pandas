@@ -21,19 +21,3 @@ Este proyecto utiliza la biblioteca Pandas de Python para realizar análisis de 
 
 - pandas==1.3.3
 - matplotlib==3.4.3
-
-## Contribución
-
-¡Las contribuciones son bienvenidas! Si deseas contribuir a este proyecto, por favor envía una solicitud de extracción.
-
-## Créditos
-
-Este proyecto fue desarrollado por [Tu Nombre].
-
-## Licencia
-
-Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
-
-## Contacto
-
-Para preguntas o sugerencias relacionadas con este proyecto, contáctame en [correo electrónico].

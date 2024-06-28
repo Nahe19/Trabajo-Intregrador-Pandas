@@ -1,4 +1,4 @@
-# Proyecto Pandas 2
+# Proyecto Pandas 
 
 Este proyecto utiliza la biblioteca Pandas de Python para realizar análisis de datos criminales.
 
@@ -11,11 +11,12 @@ Este proyecto utiliza la biblioteca Pandas de Python para realizar análisis de 
 
 ## Estructura del Proyecto
 
-- **cargar_csv.py**: Contiene la clase `CargarCSV` para cargar datos desde un archivo CSV.
-- **analisis.py**: Contiene la clase `Analisis` para realizar análisis de datos.
-- **histograma.py**: Contiene la clase `Histograma` para generar visualizaciones de datos en forma de histogramas.
+- **loadcsv.py**: Contiene la clase `DataLoader` para cargar datos desde un archivo CSV.
+- **analytics.py**: Contiene la clase `CrimeAnalytics` para realizar análisis de datos.
+- **datavisualizer.py**: Contiene la clase `DataVisualizer` para generar visualizaciones de datos en forma de histogramas.
 - **main.py**: Script principal que carga los datos, realiza análisis y genera visualizaciones.
-- **datos/raw_datos.csv**: Archivo CSV que contiene los datos criminales.
+- **raw_datos.csv**: Archivo CSV que contiene los datos criminales.
+- **clean_data.csv**: Archivo CSV que contiene los datos criminales.
 
 ## Dependencias
 

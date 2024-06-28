@@ -15,8 +15,8 @@ Este proyecto utiliza la biblioteca Pandas de Python para realizar análisis de 
 - **analytics.py**: Contiene la clase `CrimeAnalytics` para realizar análisis de datos.
 - **datavisualizer.py**: Contiene la clase `DataVisualizer` para generar visualizaciones de datos en forma de histogramas.
 - **main.py**: Script principal que carga los datos, realiza análisis y genera visualizaciones.
-- **raw_datos.csv**: Archivo CSV que contiene los datos criminales.
-- **clean_data.csv**: Archivo CSV que contiene los datos criminales.
+- **raw_datos.csv**: Archivo CSV que contiene los datos sin regularizar.
+- **clean_data.csv**: Archivo CSV que contiene los datos ya arreglados.
 
 ## Dependencias
 

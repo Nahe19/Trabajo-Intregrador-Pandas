@@ -1,6 +1,7 @@
 from loadcsv import DataLoader
 from analytics import CrimeAnalytics
 from datavisualizer import DataVisualizer
+import os
 
 def main():
     filepath = 'clean_data.csv'
@@ -12,7 +13,11 @@ def main():
     sum_victimas_por_anio = analytics.calculate_sum_victimas_por_anio()
     sum_hechos_por_anio = analytics.calculate_sum_hechos_por_anio()  # Calcular la suma de hechos por año
 
-    visualizer = DataVisualizer(means_per_crime, sum_victimas_por_anio, sum_hechos_por_anio)  # Añadir sum_hechos_por_anio
+    # Definir el directorio de salida
+    output_dir = os.path.join(os.getcwd(), 'output')  # Directorio de salida relativo a la ubicación actual
+
+    # Crear una instancia de DataVisualizer
+    visualizer = DataVisualizer(means_per_crime, sum_victimas_por_anio, sum_hechos_por_anio, output_dir)  # Añadir output_dir
 
     # Plot histograms for male victims
     visualizer.plot_histograms('cantidad_victimas_masc', 'histograms_masc')

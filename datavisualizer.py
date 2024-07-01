@@ -8,7 +8,7 @@ class DataVisualizer:
         self.sum_victimas_por_anio = sum_victimas_por_anio
         self.sum_hechos_por_anio = sum_hechos_por_anio
         self.output_dir = output_dir
-
+    
     def plot_histograms(self, victim_column, subfolder):
         crime_types = self.means_per_crime['codigo_delito'].unique()
         
@@ -29,13 +29,13 @@ class DataVisualizer:
                 safe_crime = re.sub(r'[^\w\s-]', '', crime).replace(' ', '_')
                 plt.savefig(os.path.join(output_path, f'histogramas_{safe_crime}.png'))
                 plt.close()
-
+    
     def plot_comparison_histograms(self, subfolder):
         crime_types = self.means_per_crime['codigo_delito'].unique()
-
+    
         output_path = os.path.join(self.output_dir, 'histograma', subfolder)
         os.makedirs(output_path, exist_ok=True)
-
+    
         for crime in crime_types:
             crime_data = self.means_per_crime[self.means_per_crime['codigo_delito'] == crime]
             
@@ -53,20 +53,20 @@ class DataVisualizer:
                 safe_crime = re.sub(r'[^\w\s-]', '', crime).replace(' ', '_')
                 plt.savefig(os.path.join(output_path, f'histograma_comparativo_{safe_crime}.png'))
                 plt.close()
-
+    
     def plot_pie_charts(self, subfolder):
         crime_types = self.means_per_crime['codigo_delito'].unique()
-
+    
         output_path = os.path.join(self.output_dir, 'histograma', subfolder)
         os.makedirs(output_path, exist_ok=True)
-
+    
         for crime in crime_types:
             crime_data = self.means_per_crime[self.means_per_crime['codigo_delito'] == crime]
             
             total_masc = crime_data['cantidad_victimas_masc'].sum()
             total_fem = crime_data['cantidad_victimas_fem'].sum()
             total_sd = crime_data['cantidad_victimas_sd'].sum()
-
+    
             if total_masc > 0 or total_fem > 0 or total_sd > 0:
                 plt.figure(figsize=(8, 8))
                 plt.pie([total_masc, total_fem, total_sd], labels=['Víctimas Masculinas', 'Víctimas Femeninas', 'Víctimas SD'], autopct='%1.1f%%', colors=['blue', 'pink', 'red'])
@@ -78,9 +78,9 @@ class DataVisualizer:
     def plot_victimas_anio(self, subfolder):
         output_path = os.path.join(self.output_dir, 'histograma', subfolder)
         os.makedirs(output_path, exist_ok=True)
-
+    
         crime_types = self.sum_victimas_por_anio['codigo_delito'].unique()
-
+    
         for crime in crime_types:
             crime_data = self.sum_victimas_por_anio[self.sum_victimas_por_anio['codigo_delito'] == crime]
             
@@ -96,17 +96,17 @@ class DataVisualizer:
                     safe_crime = re.sub(r'[^\w\s-]', '', crime).replace(' ', '_')
                     plt.savefig(os.path.join(output_path, f'suma_victimas_anio_{safe_crime}.png'))
                     plt.close()
-
+    
     def plot_comparison_histograms_victima_hechos(self, subfolder):
         crime_types = self.means_per_crime['codigo_delito'].unique()
-
+    
         output_path = os.path.join(self.output_dir, 'histograma', subfolder)
         os.makedirs(output_path, exist_ok=True)
-
+    
         for crime in crime_types:
             crime_data_hechos = self.sum_hechos_por_anio[self.sum_hechos_por_anio['codigo_delito'] == crime]
             crime_data_victimas = self.sum_victimas_por_anio[self.sum_victimas_por_anio['codigo_delito'] == crime]
-
+    
             if not crime_data_hechos.empty and not crime_data_victimas.empty:
                 if 'cantidad_hechos' in crime_data_hechos.columns and 'cantidad_victimas_totales' in crime_data_victimas.columns:
                     if crime_data_hechos['cantidad_hechos'].sum() > 0 or crime_data_victimas['cantidad_victimas_totales'].sum() > 0:

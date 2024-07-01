@@ -4,7 +4,9 @@ from datavisualizer import DataVisualizer
 import os
 
 def main():
-    filepath = 'clean_data.csv'
+    folder_path = 'datos'  # Carpeta donde se encuentran los archivos
+    filepath = os.path.join(folder_path, 'clean_data.csv')  # Ruta completa al archivo clean_data.csv
+    
     data_loader = DataLoader(filepath)
     df = data_loader.load_data()
     
@@ -12,32 +14,32 @@ def main():
     means_per_crime = analytics.calculate_means()
     sum_victimas_por_anio = analytics.calculate_sum_victimas_por_anio()
     sum_hechos_por_anio = analytics.calculate_sum_hechos_por_anio()  # Calcular la suma de hechos por año
-
+    
     # Definir el directorio de salida
     output_dir = os.path.join(os.getcwd(), 'output')  # Directorio de salida relativo a la ubicación actual
-
+    
     # Crear una instancia de DataVisualizer
     visualizer = DataVisualizer(means_per_crime, sum_victimas_por_anio, sum_hechos_por_anio, output_dir)  # Añadir output_dir
-
-    # Plot histograms for male victims
+    
+    # Graficar histogramas para víctimas masculinas
     visualizer.plot_histograms('cantidad_victimas_masc', 'histograms_masc')
-
-    # Plot histograms for female victims
+    
+    # Graficar histogramas para víctimas femeninas
     visualizer.plot_histograms('cantidad_victimas_fem', 'histograms_fem')
     
-    # Plot histograms for victims with unknown gender
+    # Graficar histogramas para víctimas con género desconocido
     visualizer.plot_histograms('cantidad_victimas_sd', 'histograms_sd')
-
-    # Plot comparison histograms
+    
+    # Graficar histogramas comparativos
     visualizer.plot_comparison_histograms('comparison_histograms')
-
-    # Plot pie charts for total victims per crime
+    
+    # Graficar gráficos de pastel para el total de víctimas por delito
     visualizer.plot_pie_charts('pie_charts')
     
-    # Plot sum of victims per year for each crime
+    # Graficar la suma de víctimas por año para cada delito
     visualizer.plot_victimas_anio('sum_victimas_anio')
-
-    # Plot comparison histograms for hechos and victimas
+    
+    # Graficar histogramas comparativos de hechos y víctimas
     visualizer.plot_comparison_histograms_victima_hechos('victimas_hechos')
 
 if __name__ == "__main__":
